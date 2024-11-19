@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">CatFightingClub</string>
+    <string name="bottom_menu_all">All</string>
+    <string name="bottom_menu_favorite">Favorite</string>
 </resources>
