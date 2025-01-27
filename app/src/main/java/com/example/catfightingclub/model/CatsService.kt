@@ -2,10 +2,11 @@ package com.example.catfightingclub.model
 
 class CatsService() {
 
-    private var cats = mutableListOf<Cat>()
+    private var _cats = mutableListOf<Cat>()
+    val cats: List<Cat> = _cats
 
     init {
-        cats = (0..19).map {
+        _cats = (0..19).map {
             Cat(
                 id = it.toLong(),
                 name = createName(it),
@@ -18,17 +19,17 @@ class CatsService() {
     fun changeFavoriteStatus(id: Long) {
         val index = getIndexById(id)
         if (index == -1) return
-        val tempCat = cats[index].copy(isFavorite = !cats[index].isFavorite)
-        cats = ArrayList(cats)
-        cats[index] = tempCat
+        val tempCat = _cats[index].copy(isFavorite = !_cats[index].isFavorite)
+        _cats = ArrayList(_cats)
+        _cats[index] = tempCat
     }
 
     fun getCatName(id: Long = 5): String {
         val index = getIndexById(id)
-        return cats[index].name
+        return _cats[index].name
     }
 
-    private fun getIndexById(id: Long): Int = cats.indexOfFirst {
+    private fun getIndexById(id: Long): Int = _cats.indexOfFirst {
         it.id == id
     }
     private fun createName(number: Int): String = "Cat $number"

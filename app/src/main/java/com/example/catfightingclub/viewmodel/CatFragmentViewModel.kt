@@ -4,5 +4,9 @@ import androidx.lifecycle.ViewModel
 import com.example.catfightingclub.model.CatsService
 
 class CatFragmentViewModel(private val catsService: CatsService): ViewModel() {
-    fun getCat(): String = catsService.getCatName()
+
+    var cats = catsService.cats
+    fun changeStatus(catId: Long) {
+        catsService.changeFavoriteStatus(catId)
+    }
 }

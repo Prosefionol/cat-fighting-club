@@ -2,4 +2,8 @@
     <string name="app_name">CatFightingClub</string>
     <string name="bottom_menu_all">All</string>
     <string name="bottom_menu_favorite">Favorite</string>
+    <string name="default_rv_button_name">Make favorite</string>
+    <string name="favorite_rv_button_name">Favorite</string>
+    <string name="default_rv_cat_id">1</string>
+    <string name="default_rv_cat_name">Bob</string>
 </resources>
