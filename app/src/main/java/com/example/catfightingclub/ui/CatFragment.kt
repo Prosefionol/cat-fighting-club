@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.catfightingclub.databinding.FragmentCatBinding
 import com.example.catfightingclub.ui.adapters.CatActionListener
@@ -36,7 +37,11 @@ class CatFragment : Fragment() {
         )
         binding.catRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.catRecyclerView.adapter = adapter
-        adapter.submitList(viewModel.cats)
+        viewModel.cats.observe(viewLifecycleOwner) {
+            adapter.submitList(it)
+        }
+
+
         return binding.root
     }
 
