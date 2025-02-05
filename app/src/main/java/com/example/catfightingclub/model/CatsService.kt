@@ -15,6 +15,10 @@ class CatsService() {
         }.toMutableList()
     }
 
+    fun getCats() : List<Cat> {
+        return cats.toList()
+    }
+
     fun changeFavoriteStatus(id: Long) {
         val index = getIndexById(id)
         if (index == -1) return
