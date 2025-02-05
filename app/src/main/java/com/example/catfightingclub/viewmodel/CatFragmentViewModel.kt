@@ -12,10 +12,15 @@ class CatFragmentViewModel(private val catsService: CatsService): ViewModel() {
     val cats: LiveData<List<Cat>> = _cats
 
     init {
-        _cats.value = catsService.getCats()
+        _cats.value = refreshData()
     }
 
     fun changeStatus(catId: Long) {
         catsService.changeFavoriteStatus(catId)
+        _cats.value = refreshData()
+    }
+
+    private fun refreshData(): List<Cat> {
+        return catsService.getCats()
     }
 }

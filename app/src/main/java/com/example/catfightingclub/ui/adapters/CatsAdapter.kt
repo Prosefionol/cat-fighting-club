@@ -35,23 +35,17 @@ class CatsAdapter(
             }
             binding.catFavoriteButton.setOnClickListener {
                 actionListener.onChangeStatus(cat.id)
-                if (cat.isFavorite) {
-                    changeToDefault(binding)
-                }
-                else {
-                    changeToFavorite(binding)
-                }
             }
         }
 
         private fun changeToFavorite(binding: CatViewBinding) {
             binding.catFavoriteButton.text = context.getString(R.string.favorite_rv_button_name)
-            binding.catFavoriteButton.highlightColor = Color.RED
+            binding.catFavoriteButton.setBackgroundColor(Color.RED)
         }
 
         private fun changeToDefault(binding: CatViewBinding) {
-            binding.catFavoriteButton.text = context.getString(R.string.default_rv_cat_id)
-            binding.catFavoriteButton.highlightColor = Color.CYAN
+            binding.catFavoriteButton.text = context.getString(R.string.default_rv_button_name)
+            binding.catFavoriteButton.setBackgroundColor(context.getColor(R.color.purple_500))
         }
     }
 
