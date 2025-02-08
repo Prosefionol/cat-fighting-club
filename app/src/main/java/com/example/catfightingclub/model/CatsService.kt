@@ -15,8 +15,12 @@ class CatsService() {
         }.toMutableList()
     }
 
-    fun getCats() : List<Cat> {
+    fun getCats(): List<Cat> {
         return cats.toList()
+    }
+
+    fun getFavoriteCats(): List<Cat> {
+        return cats.filter { it.isFavorite }.toList()
     }
 
     fun changeFavoriteStatus(id: Long) {
@@ -27,14 +31,10 @@ class CatsService() {
         cats[index] = tempCat
     }
 
-    fun getCatName(id: Long = 5): String {
-        val index = getIndexById(id)
-        return cats[index].name
-    }
-
     private fun getIndexById(id: Long): Int = cats.indexOfFirst {
         it.id == id
     }
+
     private fun createName(number: Int): String = "Cat $number"
     private fun createPhoto(): String = ""
 
