@@ -27,6 +27,7 @@ class CatFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCatBinding.inflate(layoutInflater, container, false)
+
         adapter = CatsAdapter(
             object:CatActionListener{
                 override fun onChangeStatus(catId: Long) {
@@ -37,10 +38,10 @@ class CatFragment : Fragment() {
         )
         binding.catRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.catRecyclerView.adapter = adapter
+
         viewModel.cats.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
-
 
         return binding.root
     }
