@@ -6,4 +6,5 @@
     <string name="favorite_rv_button_name">Favorite</string>
     <string name="default_rv_cat_id">1</string>
     <string name="default_rv_cat_name">Bob</string>
+    <string name="favorite_cat_stub">Favorite list is empty</string>
 </resources>

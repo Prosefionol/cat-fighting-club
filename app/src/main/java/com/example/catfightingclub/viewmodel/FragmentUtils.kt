@@ -13,6 +13,9 @@ class ViewModelFactory(
             CatFragmentViewModel::class.java -> {
                 CatFragmentViewModel(app.catsService)
             }
+            FavoriteCatViewModel::class.java -> {
+                FavoriteCatViewModel(app.catsService)
+            }
             else -> throw IllegalStateException()
         }
         return viewModel as T
