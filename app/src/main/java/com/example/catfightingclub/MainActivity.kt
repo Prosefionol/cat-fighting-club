@@ -6,8 +6,12 @@ import androidx.fragment.app.Fragment
 import com.example.catfightingclub.ui.CatFragment
 import com.example.catfightingclub.ui.FavoriteCatFragment
 import com.example.catfightingclub.databinding.ActivityMainBinding
+import com.example.catfightingclub.model.Cat
+import com.example.catfightingclub.model.PortableCat
+import com.example.catfightingclub.model.toPortableCat
+import com.example.catfightingclub.ui.AboutCatFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), Navigator {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -35,9 +39,14 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun loadFragment(fragment: Fragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragment_container, fragment)
-        transaction.commit()
+    override fun loadFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit()
+    }
+
+    override fun showDetails(cat: Cat) {
+        val fragment = AboutCatFragment.newInstance(cat.toPortableCat())
+        loadFragment(fragment)
     }
 }

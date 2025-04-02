@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.catfightingclub.Navigator
 import com.example.catfightingclub.databinding.FragmentFavoriteCatBinding
 import com.example.catfightingclub.ui.adapters.FavoriteCatsAdapter
 import com.example.catfightingclub.viewmodel.FavoriteCatViewModel
@@ -27,7 +28,7 @@ class FavoriteCatFragment : Fragment() {
     ): View {
         _binding = FragmentFavoriteCatBinding.inflate(layoutInflater, container, false)
 
-        adapter = FavoriteCatsAdapter()
+        adapter = FavoriteCatsAdapter(requireActivity() as Navigator)
         binding.favoriteCatRv.layoutManager = LinearLayoutManager(requireContext())
         binding.favoriteCatRv.adapter = adapter
 

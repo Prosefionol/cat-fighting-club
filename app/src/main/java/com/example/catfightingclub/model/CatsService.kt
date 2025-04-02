@@ -9,7 +9,7 @@ class CatsService() {
             Cat(
                 id = it.toLong(),
                 name = createName(it),
-                photo = createPhoto(),
+                description = createDescription(it),
                 isFavorite = DEFAULT_STATUS
             )
         }.toMutableList()
@@ -36,7 +36,7 @@ class CatsService() {
     }
 
     private fun createName(number: Int): String = "Cat $number"
-    private fun createPhoto(): String = ""
+    private fun createDescription(number: Int): String = "Cat $number description"
 
     companion object {
         const val DEFAULT_STATUS = false

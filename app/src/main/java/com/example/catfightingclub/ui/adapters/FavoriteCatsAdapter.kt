@@ -6,12 +6,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.catfightingclub.Navigator
 import com.example.catfightingclub.databinding.FavoriteCatViewBinding
 import com.example.catfightingclub.model.Cat
 
-class FavoriteCatsAdapter: ListAdapter<Cat, FavoriteCatsAdapter.FavoriteCatViewHolder>(ItemDiffCallback()) {
+class FavoriteCatsAdapter(
+    val navigator: Navigator
+): ListAdapter<Cat, FavoriteCatsAdapter.FavoriteCatViewHolder>(ItemDiffCallback()) {
 
-    class FavoriteCatViewHolder(
+    inner class FavoriteCatViewHolder(
         private val binding: FavoriteCatViewBinding
     ): RecyclerView.ViewHolder(binding.root) {
 
@@ -19,6 +22,9 @@ class FavoriteCatsAdapter: ListAdapter<Cat, FavoriteCatsAdapter.FavoriteCatViewH
         fun bind(cat: Cat) {
             binding.favoriteCatIdentifier.text = cat.id.toString()
             binding.favoriteCatName.text = cat.name
+            binding.root.setOnClickListener {
+                navigator.showDetails(cat)
+            }
         }
     }
 
