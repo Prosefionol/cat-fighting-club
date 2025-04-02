@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
 }
 
+apply(plugin = "kotlin-parcelize")
+
 android {
     namespace = "com.example.catfightingclub"
     compileSdk = 34
