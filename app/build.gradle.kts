@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.devtools.kapt)
 }
 
 apply(plugin = "kotlin-parcelize")
@@ -40,17 +42,22 @@ android {
     }
 }
 
+kapt {
+    correctErrorTypes = true
+}
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
-    implementation("androidx.fragment:fragment-ktx:1.8.5")
+    implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.android)
     implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
 }
