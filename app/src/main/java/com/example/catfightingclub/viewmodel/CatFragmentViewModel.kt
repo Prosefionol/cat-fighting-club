@@ -5,18 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.catfightingclub.model.Cat
 import com.example.catfightingclub.model.CatsService
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class CatFragmentViewModel(private val catsService: CatsService): ViewModel() {
+@HiltViewModel
+class CatFragmentViewModel @Inject constructor(private val catsService: CatsService): ViewModel() {
 
     private val _cats = MutableLiveData<List<Cat>>()
     val cats: LiveData<List<Cat>> = _cats
 
     init {
-        _cats.value = refreshData()
-    }
-
-    fun changeStatus(catId: Long) {
-        catsService.changeFavoriteStatus(catId)
         _cats.value = refreshData()
     }
 

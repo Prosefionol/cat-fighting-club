@@ -10,8 +10,10 @@ import com.example.catfightingclub.model.Cat
 import com.example.catfightingclub.model.PortableCat
 import com.example.catfightingclub.model.toPortableCat
 import com.example.catfightingclub.ui.AboutCatFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : AppCompatActivity(), Navigator {
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -39,14 +41,9 @@ class MainActivity : AppCompatActivity(), Navigator {
 
     }
 
-    override fun loadFragment(fragment: Fragment) {
+    private fun loadFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
             .commit()
-    }
-
-    override fun showDetails(cat: Cat) {
-        val fragment = AboutCatFragment.newInstance(cat.toPortableCat())
-        loadFragment(fragment)
     }
 }
