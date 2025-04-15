@@ -9,9 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.catfightingclub.Navigator
 import com.example.catfightingclub.databinding.FavoriteCatViewBinding
 import com.example.catfightingclub.model.Cat
+import javax.inject.Inject
 
-class FavoriteCatsAdapter(
-    val navigator: Navigator
+class FavoriteCatsAdapter @Inject constructor(
+    private val navigator: Navigator
 ): ListAdapter<Cat, FavoriteCatsAdapter.FavoriteCatViewHolder>(ItemDiffCallback()) {
 
     inner class FavoriteCatViewHolder(

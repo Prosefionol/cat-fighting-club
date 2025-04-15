@@ -12,12 +12,14 @@ import com.example.catfightingclub.Navigator
 import com.example.catfightingclub.databinding.FragmentFavoriteCatBinding
 import com.example.catfightingclub.ui.adapters.FavoriteCatsAdapter
 import com.example.catfightingclub.viewmodel.FavoriteCatViewModel
-import com.example.catfightingclub.viewmodel.factory
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class FavoriteCatFragment : Fragment() {
 
-    private lateinit var adapter: FavoriteCatsAdapter
-    private val viewModel: FavoriteCatViewModel by viewModels { factory() }
+    @Inject lateinit var adapter: FavoriteCatsAdapter
+    private val viewModel: FavoriteCatViewModel by viewModels()
     private var _binding: FragmentFavoriteCatBinding? = null
     private val binding
         get() = _binding!!
@@ -28,7 +30,6 @@ class FavoriteCatFragment : Fragment() {
     ): View {
         _binding = FragmentFavoriteCatBinding.inflate(layoutInflater, container, false)
 
-        adapter = FavoriteCatsAdapter(requireActivity() as Navigator)
         binding.favoriteCatRv.layoutManager = LinearLayoutManager(requireContext())
         binding.favoriteCatRv.adapter = adapter
 

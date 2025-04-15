@@ -6,21 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.catfightingclub.databinding.FragmentCatBinding
+import com.example.catfightingclub.model.CatsService
 import com.example.catfightingclub.ui.adapters.CatActionListener
 import com.example.catfightingclub.ui.adapters.CatsAdapter
 import com.example.catfightingclub.viewmodel.CatFragmentViewModel
-import com.example.catfightingclub.viewmodel.factory
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class CatFragment : Fragment() {
 
     private var _binding: FragmentCatBinding? = null
     private val binding
         get() = _binding!!
-    private lateinit var adapter: CatsAdapter
-    private val viewModel: CatFragmentViewModel by viewModels { factory() }
+    @Inject lateinit var adapter: CatsAdapter
+    private val viewModel: CatFragmentViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,14 +30,6 @@ class CatFragment : Fragment() {
     ): View {
         _binding = FragmentCatBinding.inflate(layoutInflater, container, false)
 
-        adapter = CatsAdapter(
-            object:CatActionListener{
-                override fun onChangeStatus(catId: Long) {
-                    viewModel.changeStatus(catId)
-                }
-            },
-            requireContext()
-        )
         binding.catRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.catRecyclerView.adapter = adapter
 

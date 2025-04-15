@@ -5,20 +5,20 @@ import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.catfightingclub.R
 import com.example.catfightingclub.databinding.CatViewBinding
 import com.example.catfightingclub.model.Cat
+import com.example.catfightingclub.model.CatsService
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
 
-interface CatActionListener {
-    fun onChangeStatus(catId: Long)
-}
-
-class CatsAdapter(
+class CatsAdapter @Inject constructor(
     private val actionListener: CatActionListener,
-    private val context: Context
+    @ApplicationContext private val context: Context
 ): ListAdapter<Cat, CatsAdapter.CatViewHolder>(ItemDiffCallback()) {
 
     inner class CatViewHolder(private val binding: CatViewBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -34,6 +34,12 @@ class CatsAdapter(
                 changeToDefault(binding)
             }
             binding.catFavoriteButton.setOnClickListener {
+                if (actionListener.getCatById(cat.id).isFavorite) {
+                    changeToDefault(binding)
+                }
+                else {
+                    changeToFavorite(binding)
+                }
                 actionListener.onChangeStatus(cat.id)
             }
         }

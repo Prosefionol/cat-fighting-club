@@ -5,8 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.catfightingclub.model.Cat
 import com.example.catfightingclub.model.CatsService
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class FavoriteCatViewModel(private val catsService: CatsService): ViewModel() {
+@HiltViewModel
+class FavoriteCatViewModel @Inject constructor(private val catsService: CatsService): ViewModel() {
 
     private val _favoriteCats = MutableLiveData<List<Cat>>()
     val favoriteCats: LiveData<List<Cat>> = _favoriteCats
