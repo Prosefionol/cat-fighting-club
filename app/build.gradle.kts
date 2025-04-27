@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.dagger.hilt)
     alias(libs.plugins.devtools.kapt)
+    alias(libs.plugins.safe.args)
 }
 
 apply(plugin = "kotlin-parcelize")
@@ -60,4 +61,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 }

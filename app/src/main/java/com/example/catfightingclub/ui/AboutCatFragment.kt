@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import com.example.catfightingclub.databinding.FragmentAboutCatBinding
 import com.example.catfightingclub.model.PortableCat
 
@@ -13,7 +14,7 @@ class AboutCatFragment : Fragment() {
     private val binding
         get() = _binding!!
 
-    private lateinit var cat: PortableCat
+    private val args by navArgs<AboutCatFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,13 +22,9 @@ class AboutCatFragment : Fragment() {
     ): View {
         _binding = FragmentAboutCatBinding.inflate(layoutInflater, container, false)
 
-        arguments?.let {
-            cat = it.getParcelable(ARG)!!
-        }
-
-        binding.catId.text = cat.id.toString()
-        binding.catName.text = cat.name
-        binding.catDescription.text = cat.description
+        binding.catId.text = args.cat.id.toString()
+        binding.catName.text = args.cat.name
+        binding.catDescription.text = args.cat.description
 
         return binding.root
     }
@@ -35,17 +32,5 @@ class AboutCatFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    companion object {
-        const val ARG = "ARGUMENT"
-        fun newInstance(cat: PortableCat): AboutCatFragment {
-            val args = Bundle().apply {
-                putParcelable(ARG, cat)
-            }
-            val fragment = AboutCatFragment()
-            fragment.arguments = args
-            return fragment
-        }
     }
 }

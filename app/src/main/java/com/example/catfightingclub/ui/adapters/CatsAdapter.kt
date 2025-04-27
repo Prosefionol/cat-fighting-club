@@ -5,14 +5,12 @@ import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.catfightingclub.R
 import com.example.catfightingclub.databinding.CatViewBinding
 import com.example.catfightingclub.model.Cat
-import com.example.catfightingclub.model.CatsService
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
@@ -27,7 +25,7 @@ class CatsAdapter @Inject constructor(
         fun bind(cat: Cat) {
             binding.catIdentifier.text = cat.id.toString()
             binding.catName.text = cat.name
-            if (cat.isFavorite) {
+            if (actionListener.getCatById(cat.id).isFavorite) {
                 changeToFavorite(binding)
             }
             else {
