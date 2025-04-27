@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.catfightingclub.databinding.FragmentCatBinding
-import com.example.catfightingclub.model.CatsService
-import com.example.catfightingclub.ui.adapters.CatActionListener
 import com.example.catfightingclub.ui.adapters.CatsAdapter
 import com.example.catfightingclub.viewmodel.CatFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint

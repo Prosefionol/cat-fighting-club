@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/favorite"
+    app:startDestination="@id/favoriteCatFragment">
+
+    <fragment
+        android:id="@+id/favoriteCatFragment"
+        android:name="com.example.catfightingclub.ui.FavoriteCatFragment"
+        android:label="fragment_favorite_cat"
+        tools:layout="@layout/fragment_favorite_cat" >
+        <action
+            android:id="@+id/action_favoriteCatFragment_to_aboutCatFragment"
+            app:destination="@id/aboutCatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutCatFragment"
+        android:name="com.example.catfightingclub.ui.AboutCatFragment"
+        android:label="fragment_about_cat"
+        tools:layout="@layout/fragment_about_cat" >
+        <argument
+            android:name="cat"
+            app:argType="com.example.catfightingclub.model.PortableCat" />
+    </fragment>
+</navigation>

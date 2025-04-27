@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/all_fighters"
+        android:id="@id/all"
         android:title="@string/bottom_menu_all"
         android:icon="@drawable/baseline_account_circle_24"
         />
     <item
-        android:id="@+id/favorite_fighters"
+        android:id="@id/favorite"
         android:title="@string/bottom_menu_favorite"
         android:icon="@drawable/baseline_favorite_24"
         />
