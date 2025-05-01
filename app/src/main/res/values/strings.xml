@@ -8,4 +8,5 @@
     <string name="default_rv_cat_name">Bob</string>
     <string name="favorite_cat_stub">Favorite list is empty</string>
     <string name="default_cat_description">Default cat description</string>
+    <string name="go_back_button">Go back button</string>
 </resources>
